@@ -19,7 +19,7 @@ export class HeroFormComponent implements OnInit {
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     DOB: new FormControl('', Validators.required),
-    contact: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)] )
+    contact: new FormControl('', [Validators.required, this.mobileValidator] )
   });
 
   constructor(private _router: Router) {
@@ -42,7 +42,20 @@ export class HeroFormComponent implements OnInit {
     this._router.navigate(['/']);
   }
 
-  public isDataValid() {
+  public mobileValidator(control: FormControl){
+    let mobileNumber = control.value;
+    mobileNumber = mobileNumber.toString();
+    let len = mobileNumber.length;
+    if(len != 10){
+      return{
+        mobileLength: true
+      }
+    }
+    console.log(len);
+    return null;
+  }
+
+  public isValid() {
     console.log(this.heroFom);
   }
 

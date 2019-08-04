@@ -1,12 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Pipe({
   name: 'customDate'
 })
 export class CustomDatePipe implements PipeTransform {
+  datePipe;
+  constructor(){
+    this.datePipe = new DatePipe('en');
+  }
 
   transform(value: any, args?: any): any {
     console.log(value);
+    value = this.datePipe.transform(value,'yyyy/MM/dd');
     let date = value.slice(-2);
     let month = value.substring(5,7);
     let year = value.substring(0,4);

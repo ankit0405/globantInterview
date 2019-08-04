@@ -8,15 +8,15 @@
   <mat-form-field class="first-name">
     <input matInput formControlName="firstName" placeholder="First Name">
   </mat-form-field>
-  <div *ngIf="heroFom.controls.firstName.dirty && heroFom.controls.firstName.errors" class="invalid-feedback">
-    <p *ngIf="heroFom.controls.firstName.errors.required">First name is required.</p>
+  <div *ngIf="heroFom.controls.firstName.touched && heroFom.controls.firstName.errors" >
+    <p class="invalid-entry" *ngIf="heroFom.controls.firstName.errors.required">First name is required.</p>
   </div>
 
   <mat-form-field class="last-name">
     <input matInput formControlName="lastName" placeholder="Last Name">
   </mat-form-field>
-  <div *ngIf="heroFom.controls.lastName.dirty && heroFom.controls.lastName.errors" class="invalid-feedback">
-    <p *ngIf="heroFom.controls.lastName.errors.required">Last name is required.</p>
+  <div *ngIf="heroFom.controls.lastName.touched && heroFom.controls.lastName.errors" >
+    <p class="invalid-entry" *ngIf="heroFom.controls.lastName.errors.required">Last name is required.</p>
   </div>
 
 
@@ -25,17 +25,17 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <div *ngIf="heroFom.controls.DOB.dirty && heroFom.controls.DOB.errors" class="invalid-feedback">
-    <p *ngIf="heroFom.controls.DOB.errors.required">Date of Birth is required.</p>
+  <div *ngIf="heroFom.controls.DOB.touched && heroFom.controls.DOB.errors" >
+    <p class="invalid-entry" *ngIf="heroFom.controls.DOB.errors.required">Date of Birth is required.</p>
   </div>
 
   <mat-form-field class="contact">
     <input matInput type="number" formControlName="contact" placeholder="Contact">
   </mat-form-field>
-  <div *ngIf="heroFom.controls.contact.dirty && heroFom.controls.contact.errors" class="invalid-feedback">
-    <p *ngIf="heroFom.controls.contact.errors.required">This field is empty.</p>
-    <p *ngIf="heroFom.controls.contact.errors.minlength || heroFom.controls.contact.errors.maxlength">Contact number should be of 10 digits.</p>
+  <div *ngIf="heroFom.controls.contact.touched && heroFom.controls.contact.errors">
+    <p class="invalid-entry" *ngIf="heroFom.controls.contact.errors.required">Contact number is required.</p>
+    <p class="invalid-entry" *ngIf="heroFom.controls.contact.errors.mobileLength">Contact number should be of 10 digits.</p>
   </div>
 
-  <button [disabled]="isDataValid()" class="create-button" mat-flat-button color="primary">Create a Hero</button>
+  <button [disabled]="!heroFom.valid" class="create-button" mat-flat-button color="primary">Create a Hero</button>
 </form>
