@@ -1,9 +1,10 @@
-<div class="header">
+<div class="header col">
   <h4 class="back-to-list" routerLink="/" routerLinkActive="active">
     <i class="fa fa-arrow-left"></i> Heroes List
   </h4>
 </div>
 <form class="heroes-form" [formGroup]="heroFom" (ngSubmit)="createHero()">
+  <div class="internal-form">
   <h1>Hero Form</h1>
   <mat-form-field class="first-name">
     <input matInput formControlName="firstName" placeholder="First Name">
@@ -36,6 +37,8 @@
     <p class="invalid-entry" *ngIf="heroFom.controls.contact.errors.required">Contact number is required.</p>
     <p class="invalid-entry" *ngIf="heroFom.controls.contact.errors.mobileLength">Contact number should be of 10 digits.</p>
   </div>
-
-  <button [disabled]="!heroFom.valid" class="create-button" mat-flat-button color="primary">Create a Hero</button>
+<div class="button-div">
+  <button [disabled]="!heroFom.valid" class="create-button btn" mat-flat-button color="primary">Create a Hero</button>
+</div>
+</div>
 </form>

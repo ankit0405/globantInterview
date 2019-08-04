@@ -4,6 +4,7 @@
   position: relative;
   background-color: $dark-primary-color;
   padding: 50px;
+  width: 100%;
   h1 {
     color: $text-primary-color;
     margin-left: 20px;
@@ -28,9 +29,12 @@
 
 .heroes_list {
   list-style: none;
-
+  margin-top: 2%;
+  width: 100%;
   li {
     display: flex;
+    margin: 8px;
+
   }
 
   h2 {
